@@ -1,0 +1,74 @@
+// Function Declaration
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet('Alice')); // Output: Hello, Alice!
+
+// Function Expression
+const greetExpression = function(name) {
+    return `Hello, ${name}!`;
+};
+
+console.log(greetExpression('Bob')); // Output: Hello, Bob!
+
+// Arrow Function
+const greetArrow = (name) => `Hello, ${name}!`;
+
+console.log(greetArrow('Charlie')); // Output: Hello, Charlie!
+
+// Immediately Invoked Function Expression (IIFE)
+(function() {
+    console.log('This function runs immediately!');
+})();
+
+// Functions as First-Class Citizens
+// Passing functions as arguments
+function greetCallback(name, callback) {
+    console.log(callback(name));
+}
+
+function formatName(name) {
+    return `Hello, ${name}!`;
+}
+
+greetCallback('David', formatName); // Output: Hello, David!
+
+// Returning functions from other functions
+function createGreeting(greeting) {
+    return function(name) {
+        return `${greeting}, ${name}!`;
+    };
+}
+
+const greetHello = createGreeting('Hello');
+console.log(greetHello('Eve')); // Output: Hello, Eve!
+
+// Default Parameters
+function greetDefault(name = 'Guest') {
+    return `Hello, ${name}!`;
+}
+
+console.log(greetDefault()); // Output: Hello, Guest!
+console.log(greetDefault('Frank')); // Output: Hello, Frank!
+
+// Rest Parameters
+function sum(...numbers) {
+    return numbers.reduce((total, number) => total + number, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Output: 10
+
+// Function Scope and Closures
+function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log(`Outer Variable: ${outerVariable}`);
+        console.log(`Inner Variable: ${innerVariable}`);
+    };
+}
+
+const newFunction = outerFunction('outside');
+newFunction('inside');
+// Output:
+// Outer Variable: outside
+// Inner Variable: inside
